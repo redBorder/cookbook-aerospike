@@ -21,7 +21,7 @@ action :add do
       notifies :restart, 'service[aerospike]'
       variables(
         ipsync: ipaddress_sync,
-        managers: managers_per_service["aerospike"],
+        managers: managers_per_service['aerospike'],
       )
     end
 
@@ -35,7 +35,7 @@ action :add do
       notifies :restart, 'service[webui]'
       notifies :restart, 'service[logstash]'
       variables(
-        managers: managers_per_service["aerospike"]
+        managers: managers_per_service['aerospike']
       )
     end
 
@@ -48,7 +48,7 @@ action :add do
     #   retries 2
     #   notifies :restart, 'service[rb-sequence-oozie]'
     #   variables(
-    #     managers: managers_per_service["aerospike"]
+    #     managers: managers_per_service['aerospike']
     #   )
     # end
 
