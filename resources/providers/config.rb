@@ -21,7 +21,7 @@ action :add do
       notifies :restart, 'service[aerospike]'
       variables(
         ipsync: ipaddress_sync,
-        managers: managers_per_service['aerospike'],
+        managers: managers_per_service['aerospike']
       )
     end
 
