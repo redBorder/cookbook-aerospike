@@ -11,6 +11,13 @@ action :add do
       action :upgrade
     end
 
+    service 'aerospike' do
+      service_name 'aerospike'
+      ignore_failure true
+      supports status: true, reload: true, restart: true, enable: true
+      action :nothing
+    end
+
     template '/etc/aerospike/aerospike.conf' do
       cookbook 'aerospike'
       source 'aerospike.conf.erb'
@@ -53,10 +60,7 @@ action :add do
     # end
 
     service 'aerospike' do
-      service_name 'aerospike'
-      ignore_failure true
-      supports status: true, reload: true, restart: true, enable: true
-      action [:start, :enable]
+      action [:enable, :start]
     end
 
     Chef::Log.info('Aerospike cookbook has been processed')
