@@ -2,16 +2,17 @@ module Aerospike
   module Helper
     def get_manager_ips(managers_per_service)
       ips = Array(managers_per_service['aerospike']).map do |n|
-        node_obj = if n.is_a?(Hash)
-          n
-        else
-          begin
-            Chef::Node.load(n)
-          rescue => e
-            Chef::Log.warn("Could not load node #{n}: #{e.class}: #{e.message}")
-            nil
+        node_obj =
+          if n.is_a?(Hash)
+            n
+          else
+            begin
+              Chef::Node.load(n)
+            rescue => e
+              Chef::Log.warn("Could not load node #{n}: #{e.class}: #{e.message}")
+              nil
+            end
           end
-        end
 
         next unless node_obj
 
