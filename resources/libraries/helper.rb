@@ -13,14 +13,15 @@ module Aerospike
               Chef::Log.warn("Could not load node #{n}: #{e.class}: #{e.message}")
               nil
             end
+            <
           end
 
         next unless node_obj
 
         if node_obj.is_a?(Hash)
-          node_obj['ipaddress_sync'] ||
-          node_obj['ipaddress'] ||
-          (node_obj['automatic'] && node_obj['automatic']['ipaddress'])
+           node_obj['ipaddress_sync'] ||
+           node_obj['ipaddress'] ||
+           (node_obj['automatic'] && node_obj['automatic']['ipaddress'])
         else
           node_obj['ipaddress_sync'] || node_obj['ipaddress']
         end
@@ -30,9 +31,7 @@ module Aerospike
       if ips.empty?
         raise "Aerospike IP list is empty. Check managers_per_service['aerospike'] and node attributes."
       end
-
       ips
     end
-
   end
 end
