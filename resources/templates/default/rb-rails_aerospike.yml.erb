@@ -1,8 +1,0 @@
-<% [ "production", "development" ].each do |x| %>
-<%= x %>:
-  servers:
-<% @managers.each do |x| %>
-    - '<%= x.name %>:<%= (!x["redBorder"]["manager"].nil? and !x["redBorder"]["manager"]["aerospike"].nil? and !x["redBorder"]["manager"]["aerospike"]["port"].nil?) ? x["redBorder"]["manager"]["aerospike"]["port"] : "5000" %>'
-<% end %>
-  timeout: 5
-<% end %>

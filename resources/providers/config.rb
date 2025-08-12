@@ -1,6 +1,8 @@
 # Cookbook:: aerospike
 # Provider:: config
 
+include Aerospike::Helper
+
 action :add do
   begin
     user = new_resource.user
@@ -18,6 +20,19 @@ action :add do
       action :nothing
     end
 
+    directory '/var/log/aerospike' do
+      owner user
+      group user
+      mode '0755'
+    end
+
+    file '/var/log/aerospike/aerospike.log' do
+      owner user
+      group user
+      mode '0644'
+      action :create_if_missing
+    end
+
     template '/etc/aerospike/aerospike.conf' do
       cookbook 'aerospike'
       source 'aerospike.conf.erb'
@@ -28,21 +43,7 @@ action :add do
       notifies :restart, 'service[aerospike]'
       variables(
         ipsync: ipaddress_sync,
-        managers: managers_per_service['aerospike']
-      )
-    end
-
-    template '/var/www/rb-rails/config/aerospike.yml' do
-      cookbook 'aerospike'
-      source 'rb-rails_aerospike.yml.erb'
-      owner user
-      group user
-      mode '0644'
-      retries 2
-      notifies :restart, 'service[webui]'
-      notifies :restart, 'service[logstash]'
-      variables(
-        managers: managers_per_service['aerospike']
+        managers_ips: get_manager_ips(managers_per_service)
       )
     end
 
