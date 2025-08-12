@@ -13,7 +13,6 @@ module Aerospike
               Chef::Log.warn("Could not load node #{n}: #{e.class}: #{e.message}")
               nil
             end
-            <
           end
 
         next unless node_obj

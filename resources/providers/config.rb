@@ -106,7 +106,7 @@ action :register do
         action :nothing
       end.run_action(:run)
 
-      node.normal['aerospike']['registered'] = true
+      node.override['aerospike']['registered'] = true
       Chef::Log.info('aerospike service has been registered to consul')
     end
   rescue => e
@@ -122,7 +122,7 @@ action :deregister do
         action :nothing
       end.run_action(:run)
 
-      node.normal['aerospike']['registered'] = false
+      node.override['aerospike']['registered'] = false
       Chef::Log.info('aerospike service has been deregistered from consul')
     end
   rescue => e
