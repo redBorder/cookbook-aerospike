@@ -13,6 +13,10 @@ action :add do
       action :upgrade
     end
 
+    dnf_package 'aerospike-tools' do
+      action :upgrade
+    end
+
     service 'aerospike' do
       service_name 'aerospike'
       ignore_failure true
