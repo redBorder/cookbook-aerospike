@@ -1,7 +1,7 @@
 module Aerospike
   module Helper
     def get_manager_ips(managers_per_service)
-      ips = Array(managers_per_service['aerospike']).map do |n|
+      ips = Array(managers_per_service).map do |n|
         node_obj =
           if n.is_a?(Hash)
             n
@@ -27,7 +27,7 @@ module Aerospike
 
       ips = ips.compact.uniq.sort
       if ips.empty?
-        raise "Aerospike IP list is empty. Check managers_per_service['aerospike'] and node attributes."
+        Chef::Log.warn("Aerospike IP list is empty. Check managers_per_service['aerospike'] and node attributes.")
       end
       ips
     end
