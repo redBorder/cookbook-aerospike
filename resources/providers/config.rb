@@ -7,7 +7,7 @@ action :add do
   begin
     user = new_resource.user
     ipaddress_sync = new_resource.ipaddress_sync
-    managers_per_service = new_resource.managers_per_service
+    aerospike_managers = new_resource.aerospike_managers
 
     dnf_package 'aerospike-server-community' do
       action :upgrade
@@ -43,7 +43,7 @@ action :add do
       notifies :restart, 'service[aerospike]'
       variables(
         ipsync: ipaddress_sync,
-        managers_ips: get_manager_ips(managers_per_service)
+        managers_ips: get_manager_ips(aerospike_managers)
       )
     end
 
@@ -56,7 +56,7 @@ action :add do
     #   retries 2
     #   notifies :restart, 'service[rb-sequence-oozie]'
     #   variables(
-    #     managers: managers_per_service['aerospike']
+    #     managers: aerospike_managers['aerospike']
     #   )
     # end
 
