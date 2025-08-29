@@ -9,7 +9,7 @@ module Aerospike
             node_obj = Chef::Node.load(n)
             node_obj['ipaddress_sync'] ||
               node_obj['ipaddress'] ||
-              node_obj.dig('automatic','ipaddress')
+              node_obj.dig('automatic', 'ipaddress')
           rescue => e
             Chef::Log.warn("Could not load node #{n}: #{e.class}: #{e.message}")
             nil
