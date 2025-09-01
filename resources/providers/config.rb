@@ -79,7 +79,17 @@ action :remove do
       action [:stop, :disable]
     end
 
-    dnf_package 'aerospike-server' do
+    directory '/etc/aerospike' do
+      recursive true
+      action :delete
+    end
+
+    directory '/var/log/aerospike' do
+      recursive true
+      action :delete
+    end
+
+    dnf_package 'aerospike-server-community' do
       action :remove
     end
 
