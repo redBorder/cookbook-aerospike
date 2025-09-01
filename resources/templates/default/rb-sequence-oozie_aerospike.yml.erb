@@ -1,0 +1,11 @@
+general:
+  aerospike:
+    servers:
+    <% if @managers.nil? %>
+      - <%= "'127.0.0.1:5000'" %>
+    <% else %>
+     <% @managers.first(5).each do |x| %>
+      - <%= "'#{x.name}:5000'" %>
+     <% end %>
+    <% end %>
+    timeout: 500
