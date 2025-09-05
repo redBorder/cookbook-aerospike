@@ -1,6 +1,12 @@
 cookbook-aerospike CHANGELOG
 ===============
 
+## 0.0.2
+
+  - Pablo Pérez
+    - [cfb7d33] Update rb-sequence-oozie_aerospike.yml.erb
+    - [ccce3a4] Update config.rb
+
 ## 0.0.1
 
   - Daniel Castro
