@@ -48,7 +48,6 @@ network {
    }
 }
 
-<% if @malware_enable %>
 namespace malware {
    default-ttl 180d
    nsup-period 300
@@ -63,7 +62,6 @@ namespace malware {
       evict-used-pct 90
    }
 }
-<% end %>
 
 namespace general {
    replication-factor 1
