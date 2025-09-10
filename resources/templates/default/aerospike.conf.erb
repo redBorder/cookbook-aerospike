@@ -54,10 +54,9 @@ namespace malware {
    replication-factor 2
    stop-writes-sys-memory-pct 90
    indexes-memory-budget 4G
-   storage-engine device {
+   storage-engine memory {
       file /opt/aerospike/data/aerospike.dat
       filesize <%= (@disk_size.to_i / 1024).to_i == 0 ? 1024 * 1024 : (@disk_size.to_i / 1024).to_i  %>K
-      data-in-memory true
       stop-writes-avail-pct 10
       evict-used-pct 90
    }
