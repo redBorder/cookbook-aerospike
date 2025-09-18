@@ -6,8 +6,8 @@ include Aerospike::Helper
 action :add do
   begin
     user = new_resource.user
-    ipaddress_sync = new_resource.ipaddress_sync
-    aerospike_managers = new_resource.aerospike_managers
+    ipaddress = new_resource.ipaddress
+    aerospike_ips = new_resource.aerospike_ips
 
     dnf_package 'aerospike-server-community' do
       action :upgrade
@@ -46,8 +46,8 @@ action :add do
       retries 2
       notifies :restart, 'service[aerospike]'
       variables(
-        ipsync: ipaddress_sync,
-        managers_ips: get_manager_ips(aerospike_managers)
+        ipaddress: ipaddress,
+        aerospike_ips: aerospike_ips
       )
     end
 

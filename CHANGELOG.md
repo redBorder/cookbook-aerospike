@@ -1,6 +1,11 @@
 cookbook-aerospike CHANGELOG
 ===============
 
+## 0.0.3
+
+  - manegron
+    - [8d573ff] Fix aerospike
+
 ## 0.0.2
 
   - Pablo Pérez
