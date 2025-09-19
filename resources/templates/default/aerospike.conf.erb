@@ -18,20 +18,20 @@ logging {
 
 network {
    service {
-      address <%= @ipsync %>
+      address <%= @ipaddress %>
       port <%= node["aerospike"]["port"] %>
    }
    heartbeat {
       # mode multicast
       # address <%= node["aerospike"]["multicast"] %>
       # port 9918
-      # interface-address <%= @ipsync %>
+      # interface-address <%= @ipaddress %>
 
       mode mesh
-      address <%= @ipsync %>
+      address <%= @ipaddress %>
       port 3002
 
-      <% Array(@managers_ips).each do |ip| %>
+      <% Array(@aerospike_ips).each do |ip| %>
       mesh-seed-address-port <%= ip %> 3002
       <% end %>
 
