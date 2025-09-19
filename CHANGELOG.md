@@ -1,6 +1,12 @@
 cookbook-aerospike CHANGELOG
 ===============
 
+## 0.1.0
+
+  - Pablo Pérez
+    - [d7e3eae] Update code to NG - continue with hybrid storage
+    - [4528587] Enable malware
+
 ## 0.0.3
 
   - manegron
