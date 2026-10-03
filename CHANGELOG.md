@@ -1,6 +1,11 @@
 cookbook-aerospike CHANGELOG
 ===============
 
+## 0.1.1
+
+  - manegron
+    - [6d82504] Upload cookbook only if opscode-erchef is active
+
 ## 0.1.0
 
   - Pablo Pérez
